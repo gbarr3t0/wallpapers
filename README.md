@@ -20,7 +20,7 @@ All images were filtered to remove low-resolution files, vertical mobile crops, 
 Download the entire collection directly into your wallpapers directory:
 
 ```bash
-git clone --depth 1 https://github.com ~/wallpapers
+git clone --depth 1 https://github.com/gbarr3t0/wallpapers.git ~/wallpapers
 ```
 
 ---
