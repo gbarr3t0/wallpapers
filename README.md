@@ -2,72 +2,127 @@
 
 # 🖼️ Linux Wallpapers Megapack
 
-**1,300+ curated high-resolution wallpapers for your Linux desktop.**
+### A curated library of 1,300+ high-resolution wallpapers for Linux desktops.
 
-Optimized for Hyprland, Sway, Caelestia Shell, GNOME, KDE and any other setup you're ricing.
+Clean, deduplicated and optimized. Ready for **Hyprland**, **Sway**, **Caelestia Shell**, **GNOME**, **KDE** and any other setup.
 
+[![Stars](https://img.shields.io/github/stars/gbarr3t0/wallpapers?style=flat-square&color=f6c177)](https://github.com/gbarr3t0/wallpapers/stargazers)
 ![Wallpapers](https://img.shields.io/badge/wallpapers-1300%2B-b4637a?style=flat-square)
-![Resolution](https://img.shields.io/badge/resolution-1920x1080%2B-31748f?style=flat-square)
+![Resolution](https://img.shields.io/badge/resolution-1080p%20to%202K-31748f?style=flat-square)
+![Size](https://img.shields.io/badge/size-~2.2%20GB-c4a7e7?style=flat-square)
 ![Use](https://img.shields.io/badge/use-non--commercial-9ccfd8?style=flat-square)
+
+[Overview](#-overview) · [Highlights](#-highlights) · [Collection](#-collection) · [Installation](#-installation) · [Processing](#-how-the-collection-was-built) · [FAQ](#-faq) · [Credits](#-credits--original-sources) · [Takedown](#%EF%B8%8F-disclaimer--takedown-policy)
 
 </div>
 
 ---
 
-## 📖 About
+## 📖 Overview
 
-Linux Wallpapers Megapack is a personal, hand-picked collection of desktop wallpapers built for people who care about how their desktop looks and feels.
+**Linux Wallpapers Megapack** is a personal, hand-picked collection of desktop wallpapers, built for people who care about how their desktop looks and feels.
 
-Every image went through a cleanup pipeline:
+It brings together the best of several community wallpaper packs in one place, then goes a step further: every image was filtered, deduplicated and optimized, so you get a lean, consistent library instead of a pile of mismatched files.
 
-- **Resolution filter:** only images at `1920x1080` or above were kept.
-- **Orientation filter:** vertical mobile crops were removed.
-- **Deduplication:** exact duplicates were detected and deleted.
-- **Optimization:** files were compressed for fast loading, without visible quality loss.
-
-The result is a clean, ready-to-use library, with no filler and no wallpapers that look bad on a desktop monitor.
+The collection is compatible with any window manager or desktop environment, including **Hyprland, Sway, Caelestia Shell, GNOME and KDE**.
 
 ---
 
-## ✨ Categories & Themes
+## 🌟 Highlights
+
+- 🖥️ **Desktop-ready resolution:** every image is between Full HD (`1920x1080`) and 2K (`2560x1440`).
+- 🧹 **Zero duplicates:** identical files were removed by comparing real file contents, not just names.
+- 📐 **Landscape only:** vertical mobile crops were discarded.
+- ⚡ **Lightweight:** optimized from **2.7 GB down to about 2.2 GB** without visible quality loss.
+- 🎨 **Theme-friendly:** includes wallpapers matching popular palettes like Rosé Pine, Catppuccin, Nord, Gruvbox and Everforest.
+
+---
+
+## 🗂️ Collection
 
 | Category | What you'll find |
 |---|---|
 | 🏡 **Cozy & Pixel Art** | Snowy biomes, voxel landscapes, rainy scenes, medieval fantasy and warm pixel art. |
-| 🎨 **Color Palettes** | Wallpapers matching **Rosé Pine**, **Catppuccin**, **Nord**, **Gruvbox** and **Everforest**, so your desktop, terminal and wallpaper stay consistent. |
+| 🎨 **Color Palettes** | Wallpapers matching **Rosé Pine**, **Catppuccin**, **Nord**, **Gruvbox** and **Everforest**, so your desktop, terminal and wallpaper stay visually consistent. |
 | 🎌 **Anime & Manga** | Stylized scenes, recolored manga panels and minimalist character art. |
 | 🌌 **Landscapes & Minimal** | Nature photography, space, digital illustrations and clean vector art. |
 
+### At a glance
+
+| | |
+|---|---|
+| **Total wallpapers** | 1,300+ |
+| **Resolution range** | `1920x1080` to `2560x1440` |
+| **Formats** | PNG, JPG, WebP |
+| **Collection size** | ~2.2 GB |
+| **Orientation** | Landscape (desktop) |
+| **Compatibility** | Any WM / DE |
+
 ---
 
-## 🚀 Quick Start
+## 🚀 Installation
 
-Clone the whole collection straight into your wallpapers directory:
+Clone the entire collection straight into your wallpapers directory:
 
 ```bash
 git clone --depth 1 https://github.com/gbarr3t0/wallpapers.git ~/wallpapers
 ```
 
-> 💡 `--depth 1` downloads only the latest snapshot, which saves time and disk space.
+> 💡 `--depth 1` downloads only the latest snapshot instead of the full Git history, saving time and disk space.
 
-### Setting a wallpaper
+Once cloned, point your wallpaper manager of choice to the `~/wallpapers` folder and you're done.
 
-```bash
-# swww
-swww img ~/wallpapers/your-image.png
+---
 
-# Sway (add to your config)
-output * bg ~/wallpapers/your-image.png fill
+## 🛠️ How the Collection Was Built
 
-# GNOME
-gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/wallpapers/your-image.png"
-```
+Every image went through the same pipeline, using standard open-source Linux command-line tools:
 
-### Pick a random wallpaper
+| Step | Goal | Tool |
+|---|---|---|
+| **1. Resolution filter** | Remove anything below Full HD (`1920x1080`) | ImageMagick (`identify`) + `find` / `awk` |
+| **2. Deduplication** | Remove identical images that had different names across packs | `fdupes` |
+| **3. Downscaling** | Resize only images larger than 2K to `2560x1440`; 1080p and 2K files were left untouched | ImageMagick (`mogrify`) |
+| **4. Optimization** | Apply light, high-quality compression to cut file size | ImageMagick (`mogrify`) |
+| **5. Batch processing** | Process everything in parallel across multiple CPU threads | `xargs` |
 
-```bash
-find ~/wallpapers -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) | shuf -n 1
-```
+Result: the collection went from **2.7 GB to about 2.2 GB**.
+
+---
+
+## ❓ FAQ
+
+<details>
+<summary><b>Was the image quality reduced?</b></summary>
+<br>
+
+Not in any way you would notice on a desktop. Optimization was done with ImageMagick, a professional-grade command-line tool, using conservative settings. Lossless formats like PNG keep their full quality, and JPG/WebP files use a high quality level. Nothing was upscaled or heavily compressed.
+
+</details>
+
+<details>
+<summary><b>Why is nothing above 2K?</b></summary>
+<br>
+
+Larger images were downscaled to `2560x1440`. A 4K+ source adds a lot of file size but brings no real benefit once your desktop scales it down, so capping at 2K keeps the collection light without sacrificing sharpness on typical monitors.
+
+</details>
+
+<details>
+<summary><b>Why is nothing below Full HD?</b></summary>
+<br>
+
+Low-resolution images look blurry or pixelated on desktop monitors, so anything under `1920x1080` was removed.
+
+</details>
+
+<details>
+<summary><b>Can I use these wallpapers commercially?</b></summary>
+<br>
+
+No. This repository is for **personal and non-commercial use only**. The artwork belongs to its original creators (see [Credits](#-credits--original-sources)).
+
+</details>
 
 ---
 
@@ -75,10 +130,14 @@ find ~/wallpapers -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg'
 
 This repository is a non-commercial compilation of work from great community collections on GitHub. All credit belongs to the original artists, creators and maintainers:
 
-- **[rose-pine/wallpapers](https://github.com/rose-pine/wallpapers)**: official Rosé Pine collection (voxel/Minecraft art by *neyfua*, manga recolors and photography).
-- **[D3Ext/aesthetic-wallpapers](https://github.com/D3Ext/aesthetic-wallpapers)**: wide collection of aesthetic, minimal and Linux-themed wallpapers.
-- **[SleepyCatHey/CozyPixels](https://github.com/SleepyCatHey/CozyPixels)**: cozy pixel art, Catppuccin, Nord and One Dark wallpapers.
-- **[mhkarimi1383/minecraft-wallpapers](https://github.com/mhkarimi1383/minecraft-wallpapers)**: official Minecraft panoramas and biome wallpapers.
+| Source | Contribution |
+|---|---|
+| **[rose-pine/wallpapers](https://github.com/rose-pine/wallpapers)** | Official Rosé Pine collection: voxel/Minecraft art by *neyfua*, manga recolors and photography. |
+| **[D3Ext/aesthetic-wallpapers](https://github.com/D3Ext/aesthetic-wallpapers)** | Wide collection of aesthetic, minimal and Linux-themed wallpapers. |
+| **[SleepyCatHey/CozyPixels](https://github.com/SleepyCatHey/CozyPixels)** | Cozy pixel art, Catppuccin, Nord and One Dark wallpapers. |
+| **[mhkarimi1383/minecraft-wallpapers](https://github.com/mhkarimi1383/minecraft-wallpapers)** | Official Minecraft panoramas and biome wallpapers. |
+
+Huge thanks to all of them for making their work available to the community. 💜
 
 ---
 
@@ -89,12 +148,13 @@ This repository is a non-commercial compilation of work from great community col
 Most images were collected from open community repositories where the original artist metadata was not always preserved.
 
 **Are you the creator or copyright holder of an image here?**
-Please [open an Issue](../../issues) and tell me which file is yours. I will either **add proper credit** or **remove it immediately**, whichever you prefer.
+Please [open an Issue](https://github.com/gbarr3t0/wallpapers/issues) and tell me which file is yours. I will either **add proper credit** or **remove it immediately**, whichever you prefer.
 
 ---
 
 <div align="center">
 
-If this collection made your desktop look better, consider leaving a ⭐ on the repo. It helps others find it!
+**If this collection made your desktop look better, consider leaving a ⭐**
+It helps other people find it!
 
 </div>
